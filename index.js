@@ -1,10 +1,12 @@
+//In order to use this module, 'typewriter' must be added to the relevant tag in class.
+//'caret' or 'caret-thick' can be added to the class for carets
 
-$(document).ready(function(){
+//EXAMPLES
     typeWriter('#hello',2000,true,1000);
     typeWriter('#hello2',2000,false,1000);
     typeWriter('#example',4000,true,1000);
     typeWriter('#example2',4000,false,1000);
-});
+
 function typeWriter(
     whichElement,
     durationTime,
