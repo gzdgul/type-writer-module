@@ -1,18 +1,15 @@
 //In order to use this module, 'typewriter' must be added to the relevant tag in class.
 //'caret' or 'caret-thick' can be added to the class for carets
 
-//EXAMPLES
-    typeWriter('#hello',2000,true,1000);
-    typeWriter('#hello2',2000,false,1000);
-    typeWriter('#example',4000,true,1000);
-    typeWriter('#example2',4000,false,1000);
 
-function typeWriter(
+const gzd_typewriter = {}
+gzd_typewriter.typeWriter = (
     whichElement,
     durationTime,
     afterDelete = false,
-    afterDeleteDuration = 700
-) {
+    afterDeleteDuration = 700,
+    infinite = false
+) => {
         whichElement === 'all' ? whichElement = '.typewriter' : null;
         let element = document.querySelectorAll(`${whichElement}`);
         element.forEach((element) => {
@@ -44,9 +41,13 @@ function typeWriter(
                     a = a.join('');
                     element.innerHTML = a;
                     k++;
-                    setTimeout(del, speed);
+                    return setTimeout(del, speed);
+                }
+                if (infinite) {
+                    i = 0;
+                    k = 0;
+                    setTimeout(write,durationTime);
                 }
             }
         });
 }
-
